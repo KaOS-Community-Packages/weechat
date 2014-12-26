@@ -1,5 +1,6 @@
 pkgname=weechat
-pkgver=1.0.1
+_pkgver=1.1-rc1
+pkgver=1.1_rc1
 pkgrel=1
 pkgdesc="Fast, light & extensible IRC client (curses UI)"
 arch=('x86_64')
@@ -9,17 +10,18 @@ depends=('gnutls' 'ncurses' 'libgcrypt')
 makedepends=('cmake' 'pkg-config' 'perl' 'python2' 'lua' 'tcl' 'ruby' 'aspell')
 optdepends=('perl' 'python2' 'lua' 'tcl' 'ruby' 'aspell')
 options=(!libtool)
-source=("http://weechat.org/files/src/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('1d33591b6c0adc2c30b36a7b349603cbdbcb40b2')
+source=("https://github.com/weechat/weechat/archive/v${_pkgver}.tar.gz")
+#source=("http://weechat.org/files/src/${pkgname}-${pkgver}.tar.gz")
+sha1sums=('3cf06cfead34fe351a0e3eb53144cbf3f68bc7e5')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  cmake -DPREFIX=/usr \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so
-  make
+	cd "${srcdir}/${pkgname}-${_pkgver}"
+	cmake -DPREFIX=/usr \
+	      -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -fPIC -Wall -Wextra -Werror-implicit-function-declaration"
+	make
 }
 
 package() {
-  make -C "${pkgname}-${pkgver}" DESTDIR="${pkgdir}/" install
+	cd "${srcdir}/${pkgname}-${_pkgver}"
+	make DESTDIR="${pkgdir}/" install
 }
