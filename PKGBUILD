@@ -1,5 +1,5 @@
 pkgname=weechat
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Fast, light & extensible IRC client (curses UI)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'pkg-config' 'perl' 'python2' 'lua' 'tcl' 'ruby' 'aspell')
 optdepends=('perl' 'python2' 'lua' 'tcl' 'ruby' 'aspell')
 options=(!libtool)
 source=("http://weechat.org/files/src/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('d7b0341caab91b06ea6a99df9c32665ca04641ad')
+sha1sums=('5c5419d833ebdb9167914bf11778c6f07d3e3efd')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
