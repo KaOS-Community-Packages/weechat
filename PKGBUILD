@@ -1,5 +1,5 @@
 pkgname=weechat
-pkgver=3.8
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Fast, light & extensible IRC client (curses UI)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gnutls' 'ncurses' 'libgcrypt' 'curl' 'zlib' 'ca-certificates' 'aspell'
 makedepends=('cmake' 'pkg-config' 'clang')
 options=(!libtool)
 source=("http://weechat.org/files/src/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d9d27fac127c724564cf28c6179fa6ecc79a61f9dad09a3b251500f2b0755409')
+sha256sums=('6a22be7c14487ae19dcb98b208b31c636ac53321e8c2366b8d36fdce77019f65')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
